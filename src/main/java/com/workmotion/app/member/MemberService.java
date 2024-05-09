@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-
 import javax.servlet.ServletContext;
+import java.util.List;
 
 
 @Service
@@ -22,17 +21,19 @@ public class MemberService {
     @Autowired
     private ServletContext servletContext;
 
-    
+
     public MemberDTO findId(MemberDTO memberDTO) throws Exception {
-    	return memberDAO.findId(memberDTO);
+        return memberDAO.findId(memberDTO);
     }
-    
-    public CompanyDTO companyIdFind(CompanyDTO companyDTO)throws Exception {
-    	return memberDAO.companyIdFind(companyDTO);
+
+    public CompanyDTO companyIdFind(CompanyDTO companyDTO) throws Exception {
+        return memberDAO.companyIdFind(companyDTO);
     }
-    
+
     public MemberDTO getlogin(MemberDTO memberDTO) throws Exception {
-    	memberDTO = memberDAO.detailMember(memberDTO);
+        System.out.println("memberDTO = " + memberDTO);
+        memberDTO = memberDAO.detailMember(memberDTO);
+        System.out.println("memberDTO = " + memberDTO);
         return memberDTO;
 
     }
@@ -80,10 +81,12 @@ public class MemberService {
     public int getjoin(MemberDTO memberDTO) throws Exception {
         return memberDAO.createMember(memberDTO);
     }
+
     public List<MemberDTO> getCompanyMember(MemberDTO memberDTO) throws Exception {
-    	return memberDAO.getCompanyMember(memberDTO);
+        return memberDAO.getCompanyMember(memberDTO);
     }
+
     public MemberDTO findPassWord(MemberDTO memberDTO) throws Exception {
-    	return memberDAO.findPassWord(memberDTO);
+        return memberDAO.findPassWord(memberDTO);
     }
 }

@@ -1,12 +1,11 @@
 package com.workmotion.app.member;
 
-import java.util.List;
-
+import com.workmotion.app.company.CompanyDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.workmotion.app.company.CompanyDTO;
+import java.util.List;
 
 @Repository
 public class MemberDAO {
@@ -28,7 +27,8 @@ public class MemberDAO {
     }
 
     public MemberDTO detailMember(MemberDTO memberDTO) throws Exception {
-    	return sqlSession.selectOne(NAMESPACE + "detailMember", memberDTO);
+        System.out.println("memberDTO = " + memberDTO);
+        return sqlSession.selectOne(NAMESPACE + "detailMember", memberDTO);
     }
 
     public int updateMember(MemberDTO memberDTO) throws Exception {
@@ -42,16 +42,20 @@ public class MemberDAO {
     public MemberDTO emailCheck(MemberDTO memberDTO) throws Exception {
         return sqlSession.selectOne(NAMESPACE + "emailCheck", memberDTO);
     }
-    public CompanyDTO companyIdFind(CompanyDTO companyDTO)throws Exception {
-    	return sqlSession.selectOne(NAMESPACE+"companyIdFind",companyDTO);
+
+    public CompanyDTO companyIdFind(CompanyDTO companyDTO) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + "companyIdFind", companyDTO);
     }
-    public List<MemberDTO> getCompanyMember(MemberDTO memberDTO)throws Exception{
-    	return sqlSession.selectList(NAMESPACE+"getCompanyMember",memberDTO);
+
+    public List<MemberDTO> getCompanyMember(MemberDTO memberDTO) throws Exception {
+        return sqlSession.selectList(NAMESPACE + "getCompanyMember", memberDTO);
     }
-    public MemberDTO findId(MemberDTO memberDTO)throws Exception {
-    	return sqlSession.selectOne(NAMESPACE+"findId",memberDTO);
+
+    public MemberDTO findId(MemberDTO memberDTO) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + "findId", memberDTO);
     }
+
     public MemberDTO findPassWord(MemberDTO memberDTO) throws Exception {
-    	return sqlSession.selectOne(NAMESPACE+"findPassWord",memberDTO);
+        return sqlSession.selectOne(NAMESPACE + "findPassWord", memberDTO);
     }
 }
