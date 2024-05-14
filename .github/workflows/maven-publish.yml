@@ -18,10 +18,9 @@ jobs:
           key: ${{ secrets.REMOTE_PRIVATE_KEY }} # ec2 instance pem key
           port: ${{ secrets.REMOTE_SSH_PORT }} # 접속포트
           script: | # 실행할 스크립트
-            sudo -i
             cd /home/ubuntu/workmotion
-            git pull
+            sudo git pull
             sudo /home/ubuntu/tomcat/apache-tomcat-9.0.86/bin/shutdown.sh
-            mvn clean package -U
-            mv ./target/app-1.0.0-BUILD-SNAPSHOT.war /home/ubuntu/tomcat/apache-tomcat-9.0.86/webapps/ROOT.war
+            sudo mvn clean package -U
+            sudo mv ./target/app-1.0.0-BUILD-SNAPSHOT.war /home/ubuntu/tomcat/apache-tomcat-9.0.86/webapps/ROOT.war
             sudo /home/ubuntu/tomcat/apache-tomcat-9.0.86/bin/startup.sh
