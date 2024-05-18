@@ -158,8 +158,8 @@ public class MemberController {
                     }
 
                 }
-                model.addAttribute("page", "home");
-                return "index";
+                model.addAttribute("path", "/projects/list");
+                return "commons/result";
             } else {
                 // 비번이 다른경우
                 model.addAttribute("msg", "비밀번호를 확인해주세요");
@@ -183,7 +183,8 @@ public class MemberController {
     public String mypage(HttpSession session, Model model) throws Exception {
         MemberDTO m = (MemberDTO) session.getAttribute("member");
         if (m == null) {
-            model.addAttribute("page", "home");
+            model.addAttribute("path", "/projects/list");
+            return "commons/result";
         } else {
             MemberDTO memberDTO = memberService.detailMember(m);
             model.addAttribute("dto", memberDTO);
@@ -204,8 +205,8 @@ public class MemberController {
             memberDTO.setPassword(hashpassword);
         }
         int result = memberService.updateMember(memberDTO);
-        model.addAttribute("page", "home");
-        return "index";
+        model.addAttribute("path", "/projects/list");
+        return "commons/result";
     }
 
 
